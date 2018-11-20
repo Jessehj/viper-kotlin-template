@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="3"
+    name="VIPER-kotlin (Activity)"
+    description="Creates classes for Kotlin Clean Code (Activity) for Android with TDD.">
+
+    <category value="VIPER" />
+
+    <parameter
+        id="className"
+        name="Screen Name"
+        type="string"
+        constraints="class|nonempty|unique"
+        default="Home"
+        help="The name of the screen to create" />
+
+    <parameter      
+        id="generateTest"
+        name="Generate Test File"
+        type="boolean"
+        default="true"
+        help="If true, a test file will be generated" />
+
+    <parameter
+        id="generateLayout"
+        name="Generate Layout File"
+        type="boolean"
+        default="true"
+        help="If true, a layout file will be generated" />
+
+    <parameter
+        id="layoutName"
+        name="Layout Name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        suggest="${activityToLayout(className)}"
+        default="activity_home"
+        visibility="generateLayout"
+        help="The name of the layout to create for the activity" />
+    
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>acc_android_studio.png</thumb>  
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>
